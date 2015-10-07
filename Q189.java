@@ -27,27 +27,20 @@ public class Q189 {
 //    }
 	
 	public void rotate(int[] nums, int k) {
-		if(nums.length-1<k||k==0){
-			return;
-		}
-		int[] temp = new int[nums.length];
-		int j = nums.length-k;
-		for(int i = 0;i<temp.length;i+=k){
-			int temp_i = i;
-			int temp_j = j;
-			for(int m =0;m<=k;m++){
-				if(temp_j>nums.length-1|| temp_i>nums.length-1)
-					break;
-				temp[temp_j] = nums[temp_i];
-				temp_i++;
-				temp_j++;
-			}
-			j = j-k>0?j-k:0;
-			
-			if(temp_i>nums.length-1)
-				break;
-		}
-		nums = temp;
+	    if (nums == null || nums.length == 0) return;
+	    int length = nums.length;
+	    k = k % length;
+	    reverse(nums, 0, length - 1);
+	    reverse(nums, 0, k - 1);
+	    reverse(nums, k, length - 1);
+	}
+
+	private void reverse(int[] nums, int start, int end) {
+	    while (start < end) {
+	        int tmp = nums[start];
+	        nums[start++] = nums[end];
+	        nums[end--] = tmp;
+	    }
 	}
     
     public static void main(String[] args) {
