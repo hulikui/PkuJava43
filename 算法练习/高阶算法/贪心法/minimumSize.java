@@ -15,7 +15,7 @@ public class Solution {
      * 累加到 sum >= s 可以从前部分一个个删除元素 并 更新 长度直到不满足 sum >=s 继续累加，重复以上
      */
     public int minimumSize(int[] nums, int s) {
-        int res = Math.MIN_VALUE;
+        int res = Integer.MIN_VALUE;
         int sum = 0;
         int start = 0;
         int end = 0;
@@ -29,6 +29,7 @@ public class Solution {
             }
             end++;
         }
+        if(res == Integer.MIN_VALUE) return -1;
         return res;
     }
 }
